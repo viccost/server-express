@@ -13,29 +13,26 @@ npm install nodemon --save-dev
 pra executar podemos alterar o start lá em scripts { start:  nodemon SCRIPT}
 ou 
 npx nodemon server.js
-
-podemos até remover algumas pastas assistidas pelo nodemon, assim como*/
-
-
+podemos até remover algumas pastas assistidas pelo nodemon, assim como node_modules, e tal*/
 
 
 const express = require('express')
 const app = express()
+const routes = require('./routes')
 
-app.listen(3000, () => {console.log("Servidor executando na porta 3000")});
+/* precisamos configurar o express pra tratar a req.body pra gente, do contrário, teremos 
+undefined ao tentar acessar o objeto: */
+app.use(
+    express.urlencoded({ extended: true})
+)
+app.use(
+    routes
+)
 
-app.get('/', (request, response) => {
-    response.send(`
-    <form action='/' method='POST'>
-    Nome: <input type='text' name='nome'>
-    <button>Enviar</button>
-    `)
-});
-
-app.post('/', (request, response) => {
-    response.send('Formulário recebido!')
-})
-
-app.get('/contato', (request, response) => {
-    response.send('<h1>Obrigado por entrar em contato com a gente</h1>')
-} )
+// configurando porta
+app.listen(
+    3000, () => 
+    {console.log("Servidor executando na porta 3000")
+     console.log("Acesse http://localhost:3000")
+}
+);
