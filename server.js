@@ -19,12 +19,18 @@ podemos até remover algumas pastas assistidas pelo nodemon, assim como node_mod
 const express = require('express')
 const app = express()
 const routes = require('./routes')
+const path = require('path')
+
+app.set('views', path(__dirname, 'src', 'views'));
+app.set('view engine', 'ejs');
+
 
 /* precisamos configurar o express pra tratar a req.body pra gente, do contrário, teremos 
 undefined ao tentar acessar o objeto: */
 app.use(
     express.urlencoded({ extended: true})
 )
+
 app.use(
     routes
 )
@@ -32,7 +38,7 @@ app.use(
 // configurando porta
 app.listen(
     3000, () => 
-    {console.log("Servidor executando na porta 3000")
-     console.log("Acesse http://localhost:3000")
+    {console.log("Servidor executando na porta 3000");
+     console.log("Acesse http://localhost:3000");
 }
 );

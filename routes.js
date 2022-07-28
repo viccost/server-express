@@ -1,8 +1,7 @@
 const express = require('express')
 const route = express.Router()
-const homeControler = require('./controllers/homeControllers');
-const contatoControler = require('./controllers/contatoControllers');
-
+const homeControler = require('./src/controllers/homeControllers');
+const contatoControler = require('./src/controllers/contatoControllers');
 
 // para o parametro ser opcional basta adicionar o ?
 // parâmetros de url: teste/luizmiranda/ - mais comum, na rota da URL
