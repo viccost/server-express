@@ -39,6 +39,6 @@ app.use(
 app.listen(
     3000, () => 
     {console.log("Servidor executando na porta 3000");
-     console.log("Acesse http://localhost:3000");
+     console.log("Acesse  http://localhost:3000");
 }
 );
